@@ -1,0 +1,39 @@
+<body>
+    <div class="container">
+        <h3>Elige un evento</h3>    
+        <table class="table">
+            <tr>
+                <th>Evento</th>
+                <th>Descripción</th>
+                <th>Fecha</th>
+                <th>Lugar</th>
+                <th></th>
+                <th></th>
+            </tr>
+                <% _.each(events, function(event) { %>
+            <tr data-id="<%= event.id %>" data-model="event">
+                <td><%= event.title %></td>
+                <td><%= event.description %></td>
+                <td><%= event.date %></td>
+                <td>
+                    <form action="/location/associateEventToLocation/" method="POST" >                    
+                        <input type="hidden" name="event_id" value="<%= event.id %>" />
+                        <input type="hidden" name="location_id" value="<%= location_id %>" />
+                        <input type="submit" value="Asociar" class="btn btn-sm"/>
+                        <input type="hidden" name="_csrf" value="<%= _csrf %>" />
+                    </form>
+                </td>
+                <td>
+                    <form action="/user/associateEvent/" method="POST" >                    
+                        <input type="hidden" name="event_id" value="<%= event.id %>" />
+                        <input type="hidden" name="user_id" value="<%= user_id %>" />
+                        <input type="submit" value="Asociar" class="btn btn-sm"/>
+                        <input type="hidden" name="_csrf" value="<%= _csrf %>" />
+                    </form>
+                </td>
+            </tr>
+                <% }) %>
+        </table>
+        <br/>
+    </div>
+</body>

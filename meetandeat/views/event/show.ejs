@@ -1,0 +1,17 @@
+<body>
+    <div class="container">
+        <a class="btn btn-medium btn-primary" href="/event/">Eventos</a>
+        <br/>
+        <div class="hero-unit center">
+            <form class="form-signin" >
+                <h1>Info:</h1>
+                <p><strong>Evento:</strong> <%= event.title %> </p>
+                <p><strong>Descripción:</strong> <%= event.description %> </p> 
+                <p><strong>Fecha:</strong> <%= event.date %> </p>
+                <p><strong>Lugar:</strong> <%= event.location %> </p> 
+            </form>
+        </div>
+        <hr>
+        <a class="btn btn-medium btn-primary" href="/event/edit/<%= event.id %>">Edit</a> 
+    </div>
+</body>

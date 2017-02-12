@@ -1,0 +1,51 @@
+<body>
+    <div class="container">
+        <a class="btn btn-medium btn-primary" href="/user/">Usuarios</a>
+        <br/>
+        <table class="table">
+            <div class="hero-unit center">
+                <form class="form-signin">
+                    <h3>Info:
+                        <p>Nombre: <%= user.name %> </p>
+                        <p>Apellidos: <%= user.lastname %></p>
+                        <% if(user.admin) { %>
+                <td> <img src="/images/admin.png"></td>
+                <% } else { %>
+                <td><img src="/images/user.png"></td>
+                <% }%>
+                        <p>Email: <%= user.email %> </p> </h3> 
+                </form>
+            </div>
+        </table>
+        <hr>
+        <div class="container">
+        <h3>Espacios</h3> 
+        <a href="/user/associateLocation/<%= user.id %>">Asociar Nuevo Espacio</a>
+        <table class="table">
+            <tr>
+                <th>Nombre</th>
+                <th>Descripción</th>
+                <th></th>
+                <th></th>
+            </tr>
+                <% _.each(locations, function(location) { %>
+            <tr data-id="<%=location.id %>" data-model="location">
+                <td><strong>Nombre:</strong> <%= location.name %> </td>
+                <td><strong>Descripción:</strong> <%= location.description %> </td> 
+                <td><a href="/location/show/<%= location.id %>" class="btn btn-sm btn-primary">Show</a></td>
+                <td>
+                    <form action="/user/deassociateLocation/" method="POST" >                    
+                        <input type="hidden" name="location_id" value="<%= location.id %>" />
+                        <input type="hidden" name="user_id" value="<%= user.id %>" />
+                        <input type="submit" value="Desasociar espacio" class="btn btn-sm "/>
+                        <input type="hidden" name="_csrf" value="<%= _csrf %>" />
+                    </form>
+                </td>
+            </tr>
+                <% }) %>
+        </table>
+        </div>
+        
+        <a class="btn btn-medium btn-primary" href="/user/edit/<%= user.id %>">Edit</a>
+    </div>
+</body>

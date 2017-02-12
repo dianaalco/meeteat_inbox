@@ -32,20 +32,13 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
 
-  '/': {
-    view: 'home/index'
-  },
-  'get /login': {
-       view: 'login'
-  },
+  'get /': {
+    view:'static/index'},
+  
+'post /room/:roomId/users': 'RoomController.join',
+  'delete /room/:roomId/users': 'RoomController.leave'
 
-  'post /login': 'AuthController.login',
-
-  '/logout': 'AuthController.logout',
-
-  'get /signup': {
-    view: 'signup'
-  }
+  
 
   /***************************************************************************
   *                                                                          *
@@ -57,4 +50,12 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
 
-};
+},
+module.exports.policies = {
+    // '*': true,
+    'user': {
+      'new': true,
+      index: 'sessionAuth',
+      '*': true
+    }
+  };

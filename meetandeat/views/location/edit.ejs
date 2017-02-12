@@ -1,0 +1,9 @@
+<body>
+	<form action="/location/update/<%= location.id %>" method="POST" class="form-signin">
+        <h2> Editar Espacio </h2>
+		<input value="<%= location.name %>" name="name" type="text" class="form-control"/>
+        <input value="<%= location.description %>" name="description" type="text" class="form-control"/>
+        <input type="submit" value="Proceed" class="btn btn-lg btn-primary btn-block"/>
+        <input type="hidden" name="_csrf" value="<%= _csrf %>" />
+    </form>
+</body>

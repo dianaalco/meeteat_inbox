@@ -1,0 +1,33 @@
+<body>
+    <div class="container">
+        <h3>Eventos</h3>
+        <table class="table">
+            <tr>
+                <th>Evento</th>
+                <th>Descripción</th>
+                <th>Fecha</th>
+                <th>Lugar</th>
+                <th></th>
+                <th></th>
+            </tr>
+            <% _.each(events, function(event) { %>
+                <tr data-id="<%= event.id %>" data-model="event">
+                    <td><%= event.title %></td>
+                    <td><%= event.description %></td>
+                    <td><%= event.date %></td>
+                    <td><%= event.location%></td>
+                    <td><a href="/event/show/<%= event.id %>" class="btn btn-sm btn-primary">Show</a></td>
+                    <td><a href="/event/edit/<%= event.id %>" class="btn btn-sm btn-warning">Edit</a></td>
+                    <td>
+                        <form action="/event/destroy/<%= event.id %>" method="POST"> 
+                            <input type="hidden" name="_method" value="delete"/>
+                            <input type="submit" class="btn btn-sm btn-danger" value="Delete"/>
+                            <input type="hidden" name="_csrf" value="<%= _csrf %>" />
+                        </form>
+                    </td>
+                </tr>
+                <% }) %>
+        </table>
+        <a href="/event/new">Crear Nuevo Evento</a>
+    </div>
+</body>

@@ -1,0 +1,30 @@
+<body>
+    <div class="container">
+        <h3>Espacios</h3>
+        <table class='table'>
+            <tr>
+                <th>Nombre</th>
+                <th>Descripción</th>
+                <th></th>
+                <th></th>
+                <th></th>
+            </tr>
+                <% _.each(locations, function(location) { %>
+            <tr data-id="<%= location.id %>" data-model="location">
+                <td><%= location.name %></td>
+                <td><%= location.description %></td>
+                <td><a href="/location/show/<%= location.id %>" class="btn btn-sm btn-primary">Show</a></td>
+                <td><a href="/location/edit/<%= location.id %>" class="btn btn-sm btn-warning">Edit</a></td>
+                <td>
+                    <form action="/location/destroy/<%= location.id %>" method="POST"> 
+                        <input type="hidden" name="_method" value="delete"/>
+                        <input type="submit" class="btn btn-sm btn-danger" value="Delete"/>
+                        <input type="hidden" name="_csrf" value="<%= _csrf %>" />
+                    </form>
+                </td>
+            </tr>
+                <% }) %>
+        </table>
+            <a href="/location/new">Crear Nuevo Espacio</a>
+    </div>
+</body>

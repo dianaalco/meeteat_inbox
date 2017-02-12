@@ -25,11 +25,36 @@ module.exports.policies = {
   * access)                                                                  *
   *                                                                          *
   ***************************************************************************/
+  '*': "flash",
+  
+    user: {
+        'new': "flash",
+        index: "sessionAuth", 
+        create: "flash",
+        show: "userCanSeeProfile",
+        edit: "userCanSeeProfile",
+        update: "userCanSeeProfile",
+        destroy: "sessionAuth",
+        associateLocation: "sessionAuth",
+        deassociateLocation: "sessionAuth",
+        associateLocationToUser: "sessionAuth",
+        '*': "admin"
+    },
 
-  '*': true,
-  'UserController': {
-    '*': 'isAuthenticated'
-  }
+    session: {
+        'new': "flash",
+        create: "flash"
+    },
+    image: {
+        '*': "sessionAuth"
+    },
+    location: {
+        '*': "sessionAuth"
+    },
+    event: {
+        '*': "sessionAuth"
+    }
+
 
   /***************************************************************************
   *                                                                          *

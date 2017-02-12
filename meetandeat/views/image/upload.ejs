@@ -1,0 +1,9 @@
+<body>
+	<form enctype="multipart/form-data" action="/image/upload" method="POST" id="sign-up-form" class="form-signin">
+        <h2 class="form-signin-heading"> Sube una imagen</h2> 
+        <input type="hidden" name="_csrf" value="<%=_csrf %>"/>
+        <input type="image" name="upImage" />
+        <br/>
+        <input type="submit" class="btn btn-lg btn-primary btn-block" value="upload"/>
+    </form>  
+</body>

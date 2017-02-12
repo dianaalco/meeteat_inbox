@@ -1,0 +1,18 @@
+<body>
+    <div class="container">
+        <a class="btn btn-medium btn-primary" href="/image/">Imágenes</a>
+        <br/>
+        <div class="hero-unit center">
+            <form class="form-signin" >
+                <h1>Info:</h1>
+                <p><strong>Nombre:</strong> <%= image.name %> </p>
+                <p><strong>Descripción:</strong> <%= image.description %> </p>
+                <p><strong>Formato:</strong> <%= image.image %> </p>
+                <p><strong>Tamaño:</strong> <%= image.imageSize %> </p>
+                <p><strong>Path completo:</strong> <%= image.fullPath %> </p>
+                <p><strong>Versión:</strong> <%= image.version %> </p>
+            </form>
+        </div>
+        <hr>
+    </div>
+</body>
